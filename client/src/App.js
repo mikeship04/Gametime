@@ -19,7 +19,7 @@ function App() {
             <h1>Test Route</h1>
           </Route>
           <Route path="/">
-            <h1>Page Count: {count}</h1>
+            <h1>Page Count: {count} checking if i need to npm run heroku-postbuild </h1>
           </Route>
         </Switch>
       </div>
