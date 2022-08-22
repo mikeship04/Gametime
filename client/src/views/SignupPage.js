@@ -39,7 +39,6 @@ function SignupPage() {
             body: JSON.stringify(formObj)
         })
         .then(res => {
-            debugger
             if (res.ok){
                 res.json().then(console.log)
                 //we will add a redirect
@@ -121,7 +120,7 @@ return (
             </InputAdornment>
         }/>
         </FormControl>
-        {errors ? errors.map((e) => <div>{e}</div>) : null}
+        {errors ? errors.map((e) => <div>{e[0]+': ' + e[1]}</div>) : null}
         <Button variant="contained" type="submit">Submit</Button>
         <Typography variant="subtitle1" gutterBottom></Typography>
     </Stack>

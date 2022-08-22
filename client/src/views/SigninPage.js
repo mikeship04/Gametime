@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
@@ -23,10 +23,29 @@ const paperStyle = {
 function SigninPage() {
   
   const [showPassword, setShowPassword] = useState(false)
+  const [errors, setErrors] = useState([])
   const [formObj, setFormObj] = useState ({
     username: "",
     password: ""
 })
+
+function handleSubmit(e){
+  e.preventDefault()
+  fetch('/login', {
+    method: "POST",
+    headers:{"Content-Type": "Application/json"},
+    body:JSON.stringify(formObj)
+  })
+  .then(res => {
+    if(res.ok) {
+      res.json().then(user => {
+        console.log(user)
+      })
+    } else {
+      res.json().then(json => setErrors(Object.entries(json.errors)))
+    }
+  })
+}
 
 function handleChange(e){
   setFormObj(obj => ({...obj, [e.target.id]: e.target.value}))
@@ -42,6 +61,7 @@ function handleChange(e){
 
   return (
     <Box
+    onSubmit={handleSubmit}
     display='flex'
     justifyContent='center'
     alignItems='center'
@@ -82,7 +102,7 @@ function handleChange(e){
           </InputAdornment>
       }/>
       </FormControl>
-        {/* {errors ? errors.map((e) => <div>{e}</div>)} */}
+        {errors ? errors.map((e) => <div>{e}</div>) : null}
         <Button variant="contained" type="submit">Submit</Button>
         <Typography variant="subtitle1" gutterBottom>
         Welcome, please sign in!
