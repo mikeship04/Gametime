@@ -40,8 +40,13 @@ function SignupPage() {
         })
         .then(res => {
             debugger
+            if (res.ok){
+                res.json().then(console.log)
+                //we will add a redirect
+            } else {
+                res.json().then(json => setErrors(Object.entries(json.errors)))
             }
-        )
+        })
     }
 
     function handleChange(e){
@@ -65,8 +70,6 @@ function SignupPage() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-       // if (errors === "404") return <p>page not found</p>
 
 return (
     <Box
@@ -124,6 +127,7 @@ return (
             </InputAdornment>
         }/>
         </FormControl>
+        {errors ? errors.map((e) => <div>{e}</div>) : null}
         <Button variant="contained" type="submit">Submit</Button>
         <Typography variant="subtitle1" gutterBottom></Typography>
     </Stack>
