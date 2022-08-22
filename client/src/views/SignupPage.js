@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
@@ -22,13 +22,27 @@ const paperStyle = {
 
 function SignupPage() {
 
+    const [errors, setErrors] = useState([])
     const [formObj, setFormObj] = useState ({
         username: "",
         email: "",
         password: "",
-        showPassword: false,
-        showConfirmPassword: false
     })
+    const showPassword = false
+    const showConfirmPassword = false
+    
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch("/signup",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formObj)
+        })
+        .then(res => {
+            debugger
+            }
+        )
+    }
 
     function handleChange(e){
         setFormObj(obj => ({...obj, [e.target.id]: e.target.value}))
@@ -51,10 +65,12 @@ function SignupPage() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-    
+
+       // if (errors === "404") return <p>page not found</p>
 
 return (
     <Box
+    onSubmit={handleSubmit}
     display='flex'
     justifyContent='center'
     component="form"
@@ -108,11 +124,11 @@ return (
             </InputAdornment>
         }/>
         </FormControl>
-        <Button variant="contained">Submit</Button>
+        <Button variant="contained" type="submit">Submit</Button>
         <Typography variant="subtitle1" gutterBottom></Typography>
     </Stack>
     </Paper>
-  </Box>
+</Box>
 )
 }
 
