@@ -9,13 +9,6 @@ import SigninPage from './views/SigninPage';
 import SignupPage from './views/SignupPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
 
   return (
     <BrowserRouter>
@@ -28,7 +21,7 @@ function App() {
             <SignupPage />
           </Route>
           <Route path="/">
-            <h1>Page Count: {count} </h1>
+            <h1>Page Count </h1>
           </Route>
         </Switch>
       </div>
