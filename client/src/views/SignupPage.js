@@ -28,8 +28,8 @@ function SignupPage() {
         email: "",
         password: "",
     })
-    const showPassword = false
-    const showConfirmPassword = false
+    const [showPassword, setShowPassword] = useState(false)
+    const [confirmPassword, setConfirmPassword] = useState(false)
     
     function handleSubmit(e){
         e.preventDefault()
@@ -54,17 +54,11 @@ function SignupPage() {
     }
 
     const handleClickShowPassword = () => {
-        setFormObj({
-        ...formObj,
-        showPassword: !formObj.showPassword,
-        });
+        setShowPassword(!showPassword)
     };
 
     const handleClickShowConfirmPassword = () => {
-        setFormObj({
-        ...formObj,
-        showConfirmPassword: !formObj.showConfirmPassword,
-        });
+        setConfirmPassword(!confirmPassword)
     };
 
     const handleMouseDownPassword = (event) => {
@@ -90,7 +84,7 @@ return (
             <Input
         id="password" 
         label="password" 
-        type={formObj.showPassword ? 'text' : 'password'} 
+        type={showPassword ? 'text' : 'password'} 
         value={formObj.password} 
         onChange={handleChange} 
         variant="standard" 
@@ -102,7 +96,7 @@ return (
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
             >
-                {formObj.showPassword ? <VisibilityOff /> : <Visibility />}
+                {showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
             </InputAdornment>
         }/>
@@ -111,7 +105,7 @@ return (
         <InputLabel>Confirm Password</InputLabel>
             <Input
         id="standard-basic" 
-        type={formObj.showConfirmPassword ? 'text' : 'password'} 
+        type={confirmPassword ? 'text' : 'password'} 
         label="confirm password" 
         variant="standard" 
         endAdornment={
@@ -122,7 +116,7 @@ return (
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
             >
-                {formObj.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                {confirmPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
             </InputAdornment>
         }/>
