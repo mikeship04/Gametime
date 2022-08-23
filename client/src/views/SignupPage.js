@@ -20,7 +20,7 @@ const paperStyle = {
     margin: "50px auto",
 }
 
-function SignupPage() {
+function SignupPage({updateUser}) {
 
     const [errors, setErrors] = useState([])
     const [formObj, setFormObj] = useState ({
@@ -40,8 +40,10 @@ function SignupPage() {
         })
         .then(res => {
             if (res.ok){
-                res.json().then(console.log)
-                //we will add a redirect
+                res.json().then(user => {
+                    updateUser(user)
+                    //we will add a redirect // history.push(`/users/#{user.id}`)??
+                })
             } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))
             }

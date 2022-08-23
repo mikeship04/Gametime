@@ -20,8 +20,8 @@ const paperStyle = {
   margin: "50px auto",
 }
 
-function SigninPage() {
-  
+function SigninPage({updateUser}) {
+
   const [showPassword, setShowPassword] = useState(false)
   const [errors, setErrors] = useState([])
   const [formObj, setFormObj] = useState ({
@@ -39,7 +39,8 @@ function handleSubmit(e){
   .then(res => {
     if(res.ok) {
       res.json().then(user => {
-        console.log(user)
+        updateUser(user)
+        // will add redirect
       })
     } else {
       res.json().then(json => setErrors(Object.entries(json.errors)))
