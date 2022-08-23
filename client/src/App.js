@@ -14,19 +14,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const updateUser = (user) => setCurrentUser(user)
 
-  function handleLogout() {
-    fetch('/logout', {
-      method: "DELETE"
-    }).then((r) => {
-      if (r.ok) {
-        setCurrentUser(null)
-      }
-    })
-  }
-
   return (
     <BrowserRouter>
-    <Navigation currentUser={currentUser} handleLogout={handleLogout} />
+    <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>
           <Route path="/SigninPage" element={<SigninPage updateUser={updateUser}/>}></Route>
           <Route path="/SignupPage" element={<SignupPage updateUser={updateUser}/>}></Route>

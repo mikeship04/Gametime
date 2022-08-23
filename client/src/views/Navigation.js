@@ -12,18 +12,29 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import Drawer from '@mui/material/Drawer';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { useNavigate } from 'react-router-dom';
 
-function Navigation({currentUser, handleLogout}) {
+function Navigation({currentUser, updateUser}) {
     const [state, setState] = useState({left: false})
+    let navigate = useNavigate()
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
         return;
         }
-    
         setState({ ...state, [anchor]: open });
+    }
+
+    function handleLogout() {
+        fetch('/logout', {
+        method: "DELETE"
+        }).then((r) => {
+        if (r.ok) {
+            updateUser(null)
+            navigate(`/SigninPage`)
+        }
+        })
     }
 
     const list = (anchor) => (
@@ -66,7 +77,7 @@ return (
     <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
         <Toolbar>
-        {[''].map((anchor) => (
+        {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
         <IconButton
         size="large"
