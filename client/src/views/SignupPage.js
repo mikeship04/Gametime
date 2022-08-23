@@ -41,7 +41,7 @@ function SignupPage({updateUser}) {
         .then(res => {
             if (res.ok){
                 res.json().then(user => {
-                    updateUser(user)
+                    updateUser(user.id)
                     //we will add a redirect // history.push(`/users/#{user.id}`)??
                 })
             } else {

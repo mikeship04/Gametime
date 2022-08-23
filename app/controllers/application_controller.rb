@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
 
     def authorize
         #if i need to make an object {User: "Not Authorized"}
-        render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
+        render json: { errors: ["Not authorized"] }, status: :unauthorized unless current_user
     end
 
     def is_authorized?
