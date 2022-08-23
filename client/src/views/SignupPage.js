@@ -12,6 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import FormControl from '@mui/material/FormControl'
 import Input from '@mui/material/Input'
 import InputLabel from '@mui/material/InputLabel'
+import { useNavigate } from "react-router-dom"
 
 const paperStyle = {
     padding: 20,
@@ -22,6 +23,7 @@ const paperStyle = {
 
 function SignupPage({updateUser}) {
 
+    let navigate = useNavigate()
     const [errors, setErrors] = useState([])
     const [formObj, setFormObj] = useState ({
         username: "",
@@ -41,8 +43,8 @@ function SignupPage({updateUser}) {
         .then(res => {
             if (res.ok){
                 res.json().then(user => {
-                    updateUser(user.id)
-                    //we will add a redirect // history.push(`/users/#{user.id}`)??
+                    updateUser({id: user.id, username: user.username})
+                    navigate(`/HomePage`)
                 })
             } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))

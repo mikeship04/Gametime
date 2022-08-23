@@ -4,7 +4,7 @@ function HomePage({currentUser}) {
     const [errors, setErrors] = useState([])
     const [user, setUser] = useState(false)
     const {username, email, games_played, wins, losses, coins} = user
-
+    
     // useffect fetch to /show/:id and get user info
     useEffect(() => {
         fetch('/me', {
@@ -25,12 +25,6 @@ function HomePage({currentUser}) {
 return (
     
     <div>
-        welcome back ! {username} 
-        {email}
-        {games_played}
-        {wins}
-        {losses}
-        {coins}
     </div>
 )
 }

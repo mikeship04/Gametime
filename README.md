@@ -49,3 +49,6 @@ When a player Successfully completes a hand in which they had QQ or better as th
 The round is played until all 5 games are finished and then total points determines the winner.  For this application a session will be 5 games (+/- based on fantasy land) and winners/losers will win/lose a predetermined coin value.  A user account will be generated with more than enough coins to play several sessions as they have no real value.
 
 As a user you will be able to make an account and play games.  You can create a session that will be hosted in a lobby and when another player joins that session you will play the games until you finish or time runs out (there will be a 72 hour limit on sessions at which point they will be terminated).  You will also be able to add friends (and remove) and invite them to play a session directly (avoiding the lobby).  You will be able to have multiple sessions against multiple players going at the same time.
+
+
+go into rails server and User.find(person) User.update(admin: true) add coins etc.
