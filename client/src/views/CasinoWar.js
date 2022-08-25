@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper'
 
 function Game() {
     const [displayedCard, setDisplayedCard] = useState({})
+    const [opponentCard, setOpponentCard] = useState({})
 
     const deck = new Deck()
     deck.shuffle()
@@ -13,8 +14,10 @@ function Game() {
     
     function showNextCard() {
         let shownCard = cards[count]
+        let oppCard = cards[count + 1]
             count++
             setDisplayedCard(shownCard)
+            setOpponentCard(oppCard)
     }
 
     //war.  split deck into 2 even decks (find midpoint and slice)
@@ -32,12 +35,12 @@ function Game() {
 
 return (
     <>
-        <button onClick={showNextCard}>show next card</button>
-        <div class="opponent-deck deck"></div>
-            <div className="card-grid">
-        <div class="opponent-slot card-slot">Game Cards being dealt</div>
+    <button onClick={showNextCard}>Play next Turn</button>
+    <div className="card-grid">
+        <div class="opponent-deck deck">Opponents Deck</div>
             <Paper className="card" elevation={3}>{displayedCard.suit+displayedCard.value}</Paper>
-        <div class="playercard-slot card-slot">Game Cards being dealt</div>
+            <Paper className="card" elevation={3}>{opponentCard.suit+opponentCard.value}</Paper>
+        <div class="player-deck deck">Your Deck</div>
     </div>
     </>
 )

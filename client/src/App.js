@@ -11,6 +11,8 @@ import HomePage from './views/HomePage'
 import Navigation from './views/Navigation'
 import CasinoWar from './views/CasinoWar'
 import Memory from './views/Memory'
+import Blackjack from './views/Blackjack'
+import ChinesePoker from './views/ChinesePoker'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
@@ -21,6 +23,8 @@ function App() {
     <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>
           <Route path="MemoryPage" element={<Memory />}></Route>
+          <Route path="BlackjackPage" element={<Blackjack />}></Route>
+          <Route path="ChinesePoker" element={<ChinesePoker />}></Route>
           <Route path="/SigninPage" element={<SigninPage updateUser={updateUser}/>}></Route>
           <Route path="/SignupPage" element={<SignupPage updateUser={updateUser}/>}></Route>
           <Route path="/HomePage" element={<HomePage currentUser={currentUser} />}></Route>

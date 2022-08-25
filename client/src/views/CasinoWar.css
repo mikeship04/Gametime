@@ -11,4 +11,11 @@
     display: block;
     border: 2px solid #fff;
     border-radius: 6px;
+    font-size: 3rem;
+}
+
+.deck {
+    border: 1px solid black;
+    align-items: center;
+    font-size: 3rem;
 }

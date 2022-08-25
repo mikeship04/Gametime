@@ -62,9 +62,16 @@ function Navigation({currentUser, updateUser}) {
                 </Link>
             </ListItem>
             <ListItem disablePadding>
-                <Link to='/lobby'>
+                <Link to='/Blackjack'>
                 <ListItemButton>
-                <ListItemText primary={'Find a game'} />
+                <ListItemText primary={'Play Blackjack!'} />
+                </ListItemButton>
+                </Link>
+            </ListItem>
+            <ListItem disablePadding>
+                <Link to='/ChinesePoker'>
+                <ListItemButton>
+                <ListItemText primary={'Play Chinese Poker!'} />
                 </ListItemButton>
                 </Link>
             </ListItem>
