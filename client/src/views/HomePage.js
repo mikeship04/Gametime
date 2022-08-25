@@ -96,7 +96,7 @@ return (
     <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead>
         <TableRow>
-            <TableCell>Hands & Values</TableCell>
+            <TableCell>Chinese poker Hands & Values</TableCell>
             <TableCell align="right">Top</TableCell>
             <TableCell align="right">Middle</TableCell>
             <TableCell align="right">Bottom</TableCell>
