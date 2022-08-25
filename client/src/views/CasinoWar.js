@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Deck from './Deck'
+import './CasinoWar.css'
+import Paper from '@mui/material/Paper'
 
 function Game() {
     const [displayedCard, setDisplayedCard] = useState({})
@@ -15,6 +17,13 @@ function Game() {
             setDisplayedCard(shownCard)
     }
 
+    //war.  split deck into 2 even decks (find midpoint and slice)
+    //give opponnet half deck and player half deck
+    //flip top card of deck for both player and opponent
+    //compare values, winner gets both cards
+    //if tie go to war and repeat gameplay until no tie
+    //when one player deck is empty game is over.
+
     //turn over next card 1x for player, 1x for dealer, 1x for player, next card face down for dealer
     // display total.  decide to hit or stay
     // if hit take another card from the deck and display to player, repeat until stay or 21 or bust
@@ -23,12 +32,13 @@ function Game() {
 
 return (
     <>
-    <div class="opponent-deck deck"></div>
-    <div class="opponent-slot card-slot">Game Cards being dealt</div>
-    <div class="text">text between game</div>
-    <div class="playercard-slot card-slot">Game Cards being dealt</div>
-    <button onClick={showNextCard}>show next card</button>
-    <div class="player-deck deck">{displayedCard.suit+displayedCard.value}</div>
+        <button onClick={showNextCard}>show next card</button>
+        <div class="opponent-deck deck"></div>
+            <div className="card-grid">
+        <div class="opponent-slot card-slot">Game Cards being dealt</div>
+            <Paper className="card" elevation={3}>{displayedCard.suit+displayedCard.value}</Paper>
+        <div class="playercard-slot card-slot">Game Cards being dealt</div>
+    </div>
     </>
 )
 }

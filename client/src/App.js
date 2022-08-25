@@ -9,7 +9,7 @@ import SigninPage from './views/SigninPage'
 import SignupPage from './views/SignupPage'
 import HomePage from './views/HomePage'
 import Navigation from './views/Navigation'
-import Game from './views/Game'
+import CasinoWar from './views/CasinoWar'
 import Memory from './views/Memory'
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <Route path="/SigninPage" element={<SigninPage updateUser={updateUser}/>}></Route>
           <Route path="/SignupPage" element={<SignupPage updateUser={updateUser}/>}></Route>
           <Route path="/HomePage" element={<HomePage currentUser={currentUser} />}></Route>
-          <Route path='/GamePage' element={<Game />}></Route>
+          <Route path='/CasinoWar' element={<CasinoWar />}></Route>
       </Routes>
     </BrowserRouter>
   );

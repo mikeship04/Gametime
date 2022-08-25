@@ -1,3 +1,9 @@
+body {
+    text-align: center;
+    background: #110651;
+    color: #fff
+}
+
 .card-grid {
     margin-top: 40px;
     display: grid;

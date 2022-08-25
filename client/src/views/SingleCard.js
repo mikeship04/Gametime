@@ -2,13 +2,12 @@ import React from 'react'
 import './SingleCard.css'
 import lotr7 from '../images/lotr7.png'
 
-let num = Math.floor(Math.random() * (2))
-
-
-function SingleCard({card, handleChoice, flipped}) {
+function SingleCard({card, handleChoice, flipped, disabled}) {
     
     function handleClick () {
-        handleChoice(card)
+        if (!disabled) {
+            handleChoice(card)
+        }
     }
 
 return (

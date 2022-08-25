@@ -14,6 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Drawer from '@mui/material/Drawer';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 function Navigation({currentUser, updateUser}) {
     const [state, setState] = useState({left: false})
@@ -47,16 +48,16 @@ function Navigation({currentUser, updateUser}) {
         <List>
             {/* ['Create new set', 'running sets', 'find a game', 'friends'] */}
             <ListItem disablePadding>
-                <Link to='/newGame'>
+                <Link to='/MemoryPage'>
                 <ListItemButton>
-                <ListItemText primary={'Create new set'} />
+                <ListItemText primary={'Play LOTR Memory!'} />
                 </ListItemButton>
                 </Link>
             </ListItem>
             <ListItem disablePadding>
-                <Link to='/currentGames'>
+                <Link to='/CasinoWar'>
                 <ListItemButton>
-                <ListItemText primary={'Running sets'} />
+                <ListItemText primary={'Play Casino War!'} />
                 </ListItemButton>
                 </Link>
             </ListItem>
@@ -98,8 +99,9 @@ return (
         </Drawer>
         </React.Fragment>
     ))}
+        <Link to='/HomePage'><HomeIcon/></Link>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {currentUser ? `welcome back ${currentUser.username}.` : null}
+            {currentUser ? `Welcome back ${currentUser.username}, let's play some games!` : null}
         </Typography>
         {currentUser ? null : <Link to='/SigninPage'>
         <Button color="inherit">Login</Button>

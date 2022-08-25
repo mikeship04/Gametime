@@ -25,12 +25,15 @@ const cardImages = [
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
+    const [disabled, setDisabled] = useState(false)
     
-    const shuffleCards = () => {
+    function shuffleCards() {
       const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({...card, id: Math.random()}))
 
+      setChoiceOne(null)
+      setChoiceTwo(null)
       setCards(shuffledCards)
       setTurns(0)
     }
@@ -41,6 +44,7 @@ const cardImages = [
 
     useEffect(() => {
       if (choiceOne && choiceTwo) {
+        setDisabled(true)
         if (choiceOne.src === choiceTwo.src)  {
           setCards(prevCards => {
             return prevCards.map(card => {
@@ -62,18 +66,33 @@ const cardImages = [
       setChoiceOne(null)
       setChoiceTwo(null)
       setTurns(prevTurns => prevTurns + 1)
+      setDisabled(false)
     }
+
+    useEffect(() => {
+      shuffleCards()
+    },[])
+
+    // const checkMatch = cards.map((card) => {
+    //   if (card.matched) {
+    //     return true
+    //   }else
+    //     return card
+    // })
 
   return (
     <>
     <h1>LOTR Memory</h1>
     <button onClick={shuffleCards}>play again?</button>
+    {/* { ? <p>Congratulations!</p> : null} */}
+    <p>number of turns: {turns}</p>
 
     <div className="card-grid">
       {cards.map(card => (
         <SingleCard 
         flipped={card === choiceOne || card === choiceTwo || card.matched}
-        card={card} 
+        card={card}
+        disabled={disabled}
         handleChoice={handleChoice} 
         key={card.id}/>
       ))}
