@@ -2,12 +2,20 @@
     "name": "chinese-poker-project",
     "description": "Build scripts for Heroku",
     "engines": {
-    "node": ">= 14"
+        "node": ">= 14"
     },
     "scripts": {
-    "build": "npm install --prefix client && npm run build --prefix client",
-    "clean": "rm -rf public",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+        "build": "npm install --prefix client && npm run build --prefix client",
+        "clean": "rm -rf public",
+        "deploy": "cp -a client/build/. public/",
+        "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    },
+    "dependencies": {
+        "@rails/webpacker": "5.4.3",
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12"
+    },
+    "devDependencies": {
+        "webpack-dev-server": "^3"
     }
 }
