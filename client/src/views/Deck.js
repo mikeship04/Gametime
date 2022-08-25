@@ -9,6 +9,14 @@ export default class Deck{
     get numberOfCards() {
         return this.cards.length
     }
+
+    pop() {
+        return this.cards.shift()
+    }
+
+    push() {
+        this.cards.push(Card)
+    }
     
     shuffle() {
         for (let i = this.numberOfCards -1; i > 0; i--) {
@@ -30,13 +38,13 @@ get color() {
     return this.suit === '♣' || this.suit === '♠' ? 'black' : 'red'
 }
 
-getHTML() {
-    const cardDiv = document.createElement('div') 
-        cardDiv.innerText = this.suit
-        cardDiv.classList.add("card", this.color)
-        cardDiv.dataset.value = `${this.value} ${this.suit}`
-        return cardDiv
-    }
+// getHTML() {
+//     const cardDiv = document.createElement('div') 
+//         cardDiv.innerText = this.suit
+//         cardDiv.classList.add("card", this.color)
+//         cardDiv.dataset.value = `${this.value} ${this.suit}`
+//         return cardDiv
+//     }
 }
 
 function freshDeck() {
