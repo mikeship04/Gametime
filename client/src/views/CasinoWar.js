@@ -72,14 +72,6 @@ function Game() {
     function roundWinner(playerCard, oppCard) {
         return CARD_VALUE_MAP[playerCard.value] > CARD_VALUE_MAP[oppCard.value]
     }
-    // function showNextCard() {
-    //     let shownCard = cards[count]
-    //     let oppCard = cards[count + 1]
-    //     count++
-    //     // getYourColor(shownCard)
-    //     setDisplayedCard(shownCard)
-    //     setOpponentCard(oppCard)
-    // }
     
         // function getYourColor(shownCard) {
         //     if (shownCard.suit === '♣' || shownCard.suit === '♠') {
