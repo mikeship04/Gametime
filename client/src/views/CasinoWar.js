@@ -26,6 +26,8 @@ function Game() {
         "A": 14,
     }
     
+    //set playerdeck with a new deck that is the deck that i want, which is a new deck without last card and potentially opponents card
+    //need a function in my deck class ? to take in existing deck 
     //const gamestart?
     useEffect(() => {
         const deck = new Deck()
@@ -44,18 +46,18 @@ function Game() {
         setPlayerCard(pCard)
         setOppCard(oCard)
 
-        if (roundWinner(playerCard, oppCard)) {
+        if (roundWinner(pCard, oCard)) {
             setWin('You win!')
-            playerDeck.push(playerCard)
-            playerDeck.push(oppCard)
-        } else if (roundWinner(oppCard, playerCard)) {
+            playerDeck.push(pCard)
+            playerDeck.push(oCard)
+        } else if (roundWinner(oCard, pCard)) {
             setWin('You lose this one, bummer!')
-            oppDeck.push(playerCard)
-            oppDeck.push(oppCard)
+            oppDeck.push(pCard)
+            oppDeck.push(oCard)
         } else {
             setWin('Draw')
-            playerDeck.push(playerCard)
-            oppDeck.push(oppCard)
+            playerDeck.push(pCard)
+            oppDeck.push(oCard)
         }
 
         if (isGameOver(playerDeck)) {
@@ -80,7 +82,6 @@ function Game() {
         //         shownCard.className='card.red'
         //     }
         // }
-        
     
     return (
         <>

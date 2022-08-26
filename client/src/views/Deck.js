@@ -10,6 +10,7 @@ export default class Deck{
         return this.cards.length
     }
 
+    //return newdeck and card that got popped off, use newdeck to set playerdeck.
     pop() {
         return this.cards.shift()
     }
